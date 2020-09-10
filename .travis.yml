@@ -1,0 +1,28 @@
+sudo: false
+language: python
+dist: xenial
+
+python:
+    - "3.5"
+    - "3.6"
+    - "3.7"
+    - "3.8"
+
+matrix:
+  include:
+    - python: "3.6"
+      env: TOX_ENV=docs
+      install: pip install tox
+      script: tox -e $TOX_ENV
+    - python: "3.6"
+      env: TOX_ENV=flake8,isort
+      install: pip install tox
+      script: tox -e $TOX_ENV
+
+install:
+    - pip install tox-travis codecov
+
+script:
+    - tox
+
+after_success: codecov
