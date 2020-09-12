@@ -70,4 +70,4 @@ development, please consider `buying me a coffee
 .. |docs| image:: https://readthedocs.org/projects/multiblock/badge/?version=latest
    :alt: Documentation Status
    :scale: 100%
-   :target: https://multiblock-ssg.readthedocs.io/en/latest/?badge=latest
+   :target: https://multiblock.readthedocs.io/en/latest/?badge=latest
