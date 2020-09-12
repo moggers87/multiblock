@@ -47,3 +47,32 @@ def multiblock(verbose):
         logger.setLevel(logging.INFO)
     else:
         logger.setLevel(logging.WARN)
+
+
+@multiblock.group(short_help="Manage Mastodon accounts")
+def accounts():
+    pass
+
+
+@accounts.command("add", short_help="Add a new account")
+@click.argument("user", nargs=1, required=True)
+def account_add(user):
+    pass
+
+
+@accounts.command("remove", short_help="remove an existing account")
+@click.argument("user", nargs=1, required=True)
+def account_remove(user):
+    pass
+
+
+@accounts.command("list", short_help="List accounts")
+def account_list():
+    pass
+
+@multiblock.command(short_help="Sync accounts")
+@click.option("--blocks/--no-blocks", default=True, help="Sync block lists between accounts")
+@click.option("--mutes/--no-mutes", default=True, help="Sync mute lists between accounts")
+@click.option("--domains/--no-domains", default=True, help="Sync hidden domain lists between accounts")
+def sync(blocks, mutes, domains):
+    pass
