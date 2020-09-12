@@ -37,6 +37,9 @@ logger = logging.getLogger("multiblock")
 @click.option("-v", "--verbose", count=True,
               help="Verbose output, can be used multiple times to increase logging level")
 def multiblock(verbose):
+    """
+    Sync block and mute lists over multiple Mastodon accounts
+    """
     logger.addHandler(logging.StreamHandler())
     if verbose > 1:
         logger.setLevel(logging.DEBUG)

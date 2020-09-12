@@ -8,7 +8,7 @@ Multiblock
 What?
 -----
 
-sync block and mute lists over multiple Mastodon accounts
+Sync block and mute lists over multiple Mastodon accounts
 
 Where?
 ------
