@@ -8,7 +8,7 @@ Multiblock
 What?
 -----
 
-Sync block and mute lists over multiple Mastodon accounts
+Sync block and mute lists over multiple Mastodon accounts.
 
 Where?
 ------
@@ -25,7 +25,17 @@ GPLv3 or later. See LICENSE for the actual text.
 Why though?
 -----------
 
-I have way too many accounts
+I have so many accounts and so do many of the people I'd rather not see on my
+timeline. Keeping each account up to date manually is hard work that'd I'd
+rather not do.
+
+Can I use this to share my block list with others?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+No, Multiblock requires read/write access to each account it's linked to and
+syncs bidirectionally. That means their changes propagate to your account and
+your changes propagate back to them. In Multiblock every account is equal in
+authority.
 
 What's the status of this project?
 ----------------------------------
