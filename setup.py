@@ -29,6 +29,7 @@ setup(
     ],
     install_requires=[
         "click",
+        "Mastodon.py",
     ],
     extras_require={
         "docs": [

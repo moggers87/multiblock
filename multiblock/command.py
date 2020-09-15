@@ -28,6 +28,7 @@ import logging
 import click
 
 from . import __version__
+from .config import DEFAULT_PATH, Config
 
 logger = logging.getLogger("multiblock")
 
@@ -55,20 +56,36 @@ def accounts():
 
 
 @accounts.command("add", short_help="Add a new account")
+@click.option("-r", "--refresh", is_flag=True, short_help="Refresh access token")
 @click.argument("user", nargs=1, required=True)
-def account_add(user):
-    pass
+def account_add(refresh, user):
+    with Config(DEFAULT_PATH) as cfg:
+        if user in cfg.accounts.keys() and not refresh:
+            raise click.ClickException("{} already exists")
+        if refresh:
+            cfg.clear_token(user)
+        url = cfg.get_auth_url(user)
+        click.echo("Open the following URL and enter the code: %s" % url)
+        secret = cfg.log_in(user, code=click.prompt("Secret"))
+        cfg.add_account(user, secret)
+    click.echo("%s added" % user)
 
 
 @accounts.command("remove", short_help="remove an existing account")
 @click.argument("user", nargs=1, required=True)
 def account_remove(user):
-    pass
+    with Config(DEFAULT_PATH) as cfg:
+        cfg.remove_address(user)
 
 
 @accounts.command("list", short_help="List accounts")
 def account_list():
-    pass
+    with Config(DEFAULT_PATH) as cfg:
+        accounts = list(cfg.accounts().keys())
+        accounts.sort()
+
+    click.echo("\n".join(accounts))
+
 
 @multiblock.command(short_help="Sync accounts")
 @click.option("--blocks/--no-blocks", default=True, help="Sync block lists between accounts")
